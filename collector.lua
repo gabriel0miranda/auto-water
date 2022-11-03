@@ -1,4 +1,4 @@
-local collector = {}
+collector = {}
 
 function collector.getData(lat,lon,api_key_id,api_url)
     require("socket")
@@ -15,6 +15,9 @@ end
 function collector.treatData(body)
     local lunajson = require("lunajson")
     local data = lunajson.decode(body)
+    local weather[3]
     -- Insert algorithm to separate the values of rain and humidity and output them
+    return data
+end
 
 return collector
