@@ -15,9 +15,16 @@ end
 function collector.treatData(body)
     local lunajson = require("lunajson")
     local data = lunajson.decode(body)
-    local weather[3]
-    -- Insert algorithm to separate the values of rain and humidity and output them
-    return data
+    local weather
+    weather.hum = data.main.humidity
+
+    if (data.weather[1].id <= 500) then
+        weather.id = data.weather[1].id
+    else
+        weather.id = nil
+    end
+
+    return weather
 end
 
 return collector
